@@ -38,7 +38,5 @@ func main() {
 		log.Fatalf("Error writing encoded data: %v", err)
 	}
 
-	fmt.Printf("Encoded data %v\n", encoded)
-	fmt.Printf("%08b\n", 0b00011011)
 	fmt.Printf("Encoded data written to %s\n", outputPath)
 }

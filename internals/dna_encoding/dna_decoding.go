@@ -1,5 +1,9 @@
 package dnaencoding
 
+import (
+	"fmt"
+)
+
 var decodingStatic = map[byte]string{
 	27:  "atgc", // 00011011
 	30:  "atcg", // 00011110
@@ -25,4 +29,11 @@ var decodingStatic = map[byte]string{
 	216: "ctga", // 11011000
 	225: "cgat", // 11100001
 	228: "cgta", // 11100100
+}
+
+func Decode(dna []byte) {
+
+	for _, b := range dna {
+		fmt.Printf("%08b: %s\n", b, decodingStatic[b])
+	}
 }
