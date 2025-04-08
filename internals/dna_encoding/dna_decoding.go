@@ -1,8 +1,6 @@
 package dnaencoding
 
-import (
-	"fmt"
-)
+import "fmt"
 
 var decodingStatic = map[byte]string{
 	27:  "atgc", // 00011011
@@ -31,9 +29,16 @@ var decodingStatic = map[byte]string{
 	228: "cgta", // 11100100
 }
 
-func Decode(dna []byte) {
+func Decode(dna []byte) (string, error) {
 
+	outStr := ""
 	for _, b := range dna {
-		fmt.Printf("%08b: %s\n", b, decodingStatic[b])
+		de, ok := decodingStatic[b]
+		if !ok {
+			return "", fmt.Errorf("Not a allowed char: %b - %s", b, decodingStatic[b])
+		}
+		outStr += de
 	}
+
+	return outStr, nil
 }
